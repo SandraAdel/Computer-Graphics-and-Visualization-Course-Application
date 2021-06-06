@@ -6,9 +6,9 @@ from PyQt5.QtWidgets import QMainWindow, QApplication, QDialog, QFileDialog
 from win import Ui_MainWindow
 from PyQt5 import Qt
 from vtk.util import numpy_support
-import numpy as np
 
 path='./data'
+dataDir = 'headsq/quarter'
 surfaceExtractor = vtk.vtkContourFilter()
 
 class MainWindow(QMainWindow, Ui_MainWindow):
@@ -35,31 +35,19 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.vtkWidget.GetRenderWindow().AddRenderer(self.ren)
         self.iren = self.vtkWidget.GetRenderWindow().GetInteractor()
 
+
+        # v16 = vtk.vtkVolume16Reader()
+        # v16.SetDataDimensions(64, 64)
+        # v16.SetDataByteOrderToLittleEndian()
+        # v16.SetFilePrefix(dataDir)
+        # v16.SetImageRange(1, 93)
+        # v16.SetDataSpacing(3.2, 3.2, 1.5)
         ######################################Read Data##############################################
         reader = vtk.vtkDICOMImageReader()
+        reader.SetDataByteOrderToLittleEndian()
         reader.SetDirectoryName(self.PathDicom)
         reader.Update()
 
-        # Load dimensions using `GetDataExtent`
-        _extent = reader.GetDataExtent()
-        ConstPixelDims = [_extent[1]-_extent[0]+1, _extent[3]-_extent[2]+1, _extent[5]-_extent[4]+1]
-
-        # Load spacing values
-        ConstPixelSpacing = reader.GetPixelSpacing()
-
-        # Get the 'vtkImageData' object from the reader
-        imageData = reader.GetOutput()
-        # Get the 'vtkPointData' object from the 'vtkImageData' object
-        pointData = imageData.GetPointData()
-        # Ensure that only one array exists within the 'vtkPointData' object
-        assert (pointData.GetNumberOfArrays()==1)
-        # Get the `vtkArray` (or whatever derived type) which is needed for the `numpy_support.vtk_to_numpy` function
-        arrayData = pointData.GetArray(0)
-
-        # Convert the `vtkArray` to a NumPy array
-        ArrayDicom = numpy_support.vtk_to_numpy(arrayData)
-        # Reshape the NumPy array to 3D using 'ConstPixelDims' as a 'shape'
-        ArrayDicom = ArrayDicom.reshape(ConstPixelDims, order='F')
         #########################################################################################
 
         # surfaceExtractor.SetInputConnection(v16.GetOutputPort())
@@ -87,16 +75,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.ren.ResetCameraClippingRange()
 
         self.frame.setLayout(self.vl)
-        self.iren.Start()
-        self.iren.Initialize()
-        self.show()
+        self.vtkWidget.Initialize()
+        self.vtkWidget.GetRenderWindow().Render()
+        self.vtkWidget.Start()
+        self.vtkWidget.show()
 
     def slider_SLOT(self,val):
         surfaceExtractor.SetValue(0, val)
-        self.update()
-
-    def update(self):
-        self.iren.Update()
+        self.vtkWidget.update()
 
 
 if __name__ == "__main__":
