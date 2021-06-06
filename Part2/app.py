@@ -36,19 +36,19 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.iren = self.vtkWidget.GetRenderWindow().GetInteractor()
 
         ######################################Read Data##############################################
-        self.reader = vtk.vtkDICOMImageReader()
-        self.reader.SetDirectoryName(self.PathDicom)
-        self.reader.Update()
+        reader = vtk.vtkDICOMImageReader()
+        reader.SetDirectoryName(self.PathDicom)
+        reader.Update()
 
         # Load dimensions using `GetDataExtent`
-        _extent = self.reader.GetDataExtent()
+        _extent = reader.GetDataExtent()
         ConstPixelDims = [_extent[1]-_extent[0]+1, _extent[3]-_extent[2]+1, _extent[5]-_extent[4]+1]
 
         # Load spacing values
-        ConstPixelSpacing = self.reader.GetPixelSpacing()
+        ConstPixelSpacing = reader.GetPixelSpacing()
 
         # Get the 'vtkImageData' object from the reader
-        imageData = self.reader.GetOutput()
+        imageData = reader.GetOutput()
         # Get the 'vtkPointData' object from the 'vtkImageData' object
         pointData = imageData.GetPointData()
         # Ensure that only one array exists within the 'vtkPointData' object
@@ -63,7 +63,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         #########################################################################################
 
         # surfaceExtractor.SetInputConnection(v16.GetOutputPort())
-        surfaceExtractor.SetInputConnection(self.reader.GetOutputPort())
+        surfaceExtractor.SetInputConnection(reader.GetOutputPort())
         surfaceExtractor.SetValue(0, 500)
         surfaceNormals = vtk.vtkPolyDataNormals()
         surfaceNormals.SetInputConnection(surfaceExtractor.GetOutputPort())
@@ -87,16 +87,16 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.ren.ResetCameraClippingRange()
 
         self.frame.setLayout(self.vl)
-        self.update()
+        self.iren.Start()
+        self.iren.Initialize()
+        self.show()
 
     def slider_SLOT(self,val):
         surfaceExtractor.SetValue(0, val)
         self.update()
 
     def update(self):
-        self.iren.Start()
-        self.iren.Initialize()
-        self.show()
+        self.iren.Update()
 
 
 if __name__ == "__main__":
