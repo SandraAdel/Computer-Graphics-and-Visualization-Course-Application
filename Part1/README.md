@@ -37,5 +37,5 @@ A) 3 Animations by sequence when running:
 
 B) To make sense of the environment:
 - The casquette object is chosen to be a sports one not a formal one
-- Another object is loaded: football_goal and to make sense of a football field
+- Another object is loaded: football_goal to make sense of a football field
   and is positioned using function drawFootBallGoal()
