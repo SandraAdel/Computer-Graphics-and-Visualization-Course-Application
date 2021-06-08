@@ -1,2 +1,2 @@
 # Medical Visualization
-<img src="screenshots/1.png" >
+<img src="screenshots/1.JPG" >
