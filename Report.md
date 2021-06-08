@@ -1,8 +1,19 @@
 Part A
 
+Problems Faced:
+1. Linking error problem that the .obj file could not be read from the data folder in the project folder
+   Solved: By taking the absolute path of the file from the desktop directory
+2. glm problem that the .obj file appeared as a 3D image not in vertices information
+   Solved: TA Eslam Adel sent edited glm.cpp and glm.h files
+3. Took a long time and effort to adjust the robot walking animation technique
 
-
-
+You can find in the part 1 folder:
+- main.cpp
+- image folder for texture mapping images
+- data folder for .obj and .mtl file of objects
+- imageloader and glm files
+- Demo video to illustrate robot animation 
+- README explaining functions added, self-animation technqiues, loaded objects interaction animation techniques and texture mapping technique
 
 Part B
 
