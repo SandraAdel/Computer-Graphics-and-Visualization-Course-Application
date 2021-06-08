@@ -21,12 +21,16 @@ A) 3 Animations by sequence when running:
   and their values are being printed along with robot angles by key 'p' in order to form correct positions
 - Ball interaction with robot is achieved by function playBall(ball_position_y, ball_position_z)
 
+![2021-06-09 (19)](https://user-images.githubusercontent.com/81769303/121265751-96d55380-c8b9-11eb-9777-f893d670abca.png)
+
 *2. Raising Cap Animation:*
     *Object loaded: casquette (Animation Interaction with Object)*
 - The cap is controlled by 1 parameter: casquette_position_y,
   where the uplifting of the cap in the y direction is controlled by key 'c' and downlifting by key 'C'
   and its value is being printed along with other values as stated before to form correct positions
 - Cap interaction with robot is achieved by function raiseCasquette(casquette_position_y)
+
+![2021-06-09 (20)](https://user-images.githubusercontent.com/81769303/121265768-9f2d8e80-c8b9-11eb-993a-1d728d26ec87.png)
 
 *3. Walking Animation:*
     *Object loaded: None (Animation Interaction without Object)*
@@ -35,7 +39,10 @@ A) 3 Animations by sequence when running:
   and its value is being printed along with other values as stated before to form correct positions
 - The walking process is achieved by function walk(step_forward)
 
+![2021-06-09 (21)](https://user-images.githubusercontent.com/81769303/121265788-a6ed3300-c8b9-11eb-88b0-fd9aaa905f42.png)
+
 B) To make sense of the environment:
 - The casquette object is chosen to be a sports one not a formal one
 - Another object is loaded: football_goal to make sense of a football field
   and is positioned using function drawFootBallGoal()
+
