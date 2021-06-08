@@ -6,6 +6,7 @@
 - There are 2 modes : Surface Rendering and Ray casting
 - Toggling between modes can be done by simply pressing the mode button
 <img src="screenshots/3.JPG" >
+
 - Default mode on start up is Surface Rending mode
 - You can change camera view or zoom in out by iinteracting with the embedded GUI
 - Changing to Ray casting can be done by pressing on the second button
