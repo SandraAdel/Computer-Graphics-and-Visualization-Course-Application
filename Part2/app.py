@@ -42,7 +42,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         if (self.PathDicom == ''):
             fname=QFileDialog.getExistingDirectory(self, 'Open folder',path)
             self.PathDicom = fname
-            self.initializeVTK()
+            try:
+                self.initializeVTK()
+            except:
+                return
         else:
             fname=QFileDialog.getExistingDirectory(self, 'Open folder',path)
             self.PathDicom = fname
@@ -54,18 +57,25 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.vl.addWidget(self.vtkWidget)
         self.OpenVTK()
         
+        
 
     def OpenVTK(self):
         self.ren = vtk.vtkRenderer()
-        self.vtkWidget.GetRenderWindow().AddRenderer(self.ren)
+        try:
+            self.vtkWidget.GetRenderWindow().AddRenderer(self.ren)
+        except:
+            return
         self.iren = self.vtkWidget.GetRenderWindow().GetInteractor()
 
         ######################################Read Data##############################################
-        self.reader = vtk.vtkDICOMImageReader()
+        try:
+            self.reader = vtk.vtkDICOMImageReader()
+        except:
+            return
+        
         self.reader.SetDataByteOrderToLittleEndian()
         self.reader.SetDirectoryName(self.PathDicom)
         self.reader.Update()
-
         ########################################Get Mode#########################################
         if(self.mode):
             self.surfaceMode()
