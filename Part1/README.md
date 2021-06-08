@@ -12,12 +12,30 @@
      
 **Object Loading and Animation**
 
-3 Animations by sequence when running:
+A) 3 Animations by sequence when running:
+
 *1. Passing Football Animation:*
-    *Object loaded: soccerball*
+    *Object loaded: soccerball (Animation Interaction with Object)*
 - The football is controlled by 2 parameters: ball_position_y and ball_position_z,
   where the uplifting of the ball is controlled by key 'u' and downlifting is controlled by key 'd'
   and their values are being printed along with robot angles by key 'p' in order to form correct positions
-- Ball interaction is with robot is achieved by function playBall(ball_position_y, ball_position_z)
+- Ball interaction with robot is achieved by function playBall(ball_position_y, ball_position_z)
 
 *2. Raising Cap Animation:*
+    *Object loaded: casquette (Animation Interaction with Object)*
+- The cap is controlled by 1 parameter: casquette_position_y,
+  where the uplifting of the cap in the y direction is controlled by key 'c' and downlifting by key 'C'
+  and its value is being printed along with other values as stated before to form correct positions
+- Cap interaction with robot is achieved by function raiseCasquette(casquette_position_y)
+
+*3. Walking Animation:*
+    *Object loaded: None (Animation Interaction without Object)*
+- This action is controlled by 1 parameter: step_forward,
+  where the stepping forward process is controlled by key 'o'
+  and its value is being printed along with other values as stated before to form correct positions
+- The walking process is achieved by function walk(step_forward)
+
+B) To make sense of the environment:
+- The casquette object is chosen to be a sports one not a formal one
+- Another object is loaded: football_goal and to make sense of a football field
+  and is positioned using function drawFootBallGoal()
