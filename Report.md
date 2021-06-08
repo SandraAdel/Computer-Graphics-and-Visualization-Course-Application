@@ -8,12 +8,14 @@ Problems Faced:
 3. Took a long time and effort to adjust the robot walking animation technique
 
 You can find in the part 1 folder:
+1. Assignment 3 zip folder containing:
 - main.cpp
 - image folder for texture mapping images
 - data folder for .obj and .mtl file of objects
 - imageloader and glm files
-- Demo video to illustrate robot animation 
-- README explaining functions added, self-animation technqiues, loaded objects interaction animation techniques and texture mapping technique
+2. Demo video zip folder containing:
+- Demo video to illustrate robot animation & texture mapping 
+3. README explaining functions added, self-animation technqiues, loaded objects interaction animation techniques and texture mapping technique
 
 Part B
 
