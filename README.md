@@ -1,6 +1,7 @@
-# CG Task3
+# Computer Graphics and Visulalization
 
 ## Part1
+## 3D Animated Scene Construction using OpenGL
 
 1. draw a floor and put the full body on top of it.
 2. put a texture on the floor
