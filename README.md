@@ -9,7 +9,6 @@
 4. you are required to to design two animations:
     * Using the robotic body without interaction with any object.
     *  The robotic body should interact with loaded objects
-
 5. download different objects and load it in your scene to make sense of the animation environment.
 
 ## Part2
