@@ -24,4 +24,5 @@
     * Ray casting rendering (with a fixed transfer function)
         * Bonus (Adjustable transfer function)
 
+## More Detailed Explanation and Visualization is offered in README Files of Parts 1 and 2 Folders
 
